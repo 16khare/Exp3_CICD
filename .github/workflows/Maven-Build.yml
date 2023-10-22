@@ -1,0 +1,23 @@
+name: Maven Build
+
+on:
+  push:
+    branches:
+      - main  # Change this to the branch you want to trigger the workflow on (e.g., 'master' or 'main')
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Use the latest version of Ubuntu as the runner
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # This step checks out your code repository
+
+    - name: Set up Java
+      uses: actions/setup-java@v2
+      with:
+        java-version: '17'  # You can specify the desired Java version here
+        distribution: 'adopt'  # Specify the distribution here, e.g., 'adopt', 'adopt-lts', 'adopt-hotspot', or 'adopt-openj9'
+
+    - name: Build with Maven
+      run: mvn clean install  # Customize this command as needed to build your project`:
